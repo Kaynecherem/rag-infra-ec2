@@ -1,0 +1,15 @@
+# ── SSH ───────────────────────────────────────────────────────────────
+# Name of your EC2 key pair (create one in AWS Console or via CLI first)
+ssh_key_name = "insurance-rag"
+
+# Your IP address for SSH access (find at https://whatismyip.com)
+# Use /32 for exact IP, or 0.0.0.0/0 to allow all (less secure)
+my_ip = "YOUR.IP.HERE/32"
+
+# ── API Keys ─────────────────────────────────────────────────────────
+openai_api_key    = "sk-proj-..."
+anthropic_api_key = "sk-ant-..."
+pinecone_api_key  = "pcsk_..."
+
+# Generate with: python -c "import secrets; print(secrets.token_urlsafe(32))"
+secret_key = "REPLACE_WITH_RANDOM_STRING"
