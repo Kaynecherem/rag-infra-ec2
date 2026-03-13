@@ -22,6 +22,12 @@ variable "project_name" {
   default     = "insurance-rag"
 }
 
+variable "domain_name" {
+  description = "Custom domain name"
+  type        = string
+  default     = "agencylensai.com"
+}
+
 variable "ec2_instance_type" {
   description = "EC2 instance type (t2.micro = free tier)"
   type        = string

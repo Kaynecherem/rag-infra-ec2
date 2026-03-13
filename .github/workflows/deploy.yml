@@ -6,23 +6,24 @@ on:
     paths:
       - 'infra/terraform/**'
       - '.github/workflows/**'
-  workflow_dispatch:    # manual trigger
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 env:
-  TF_VAR_ssh_key_name:     ${{ secrets.SSH_KEY_NAME }}
-  TF_VAR_my_ip:            "0.0.0.0/0"
-  TF_VAR_openai_api_key:   ${{ secrets.OPENAI_API_KEY }}
+  TF_VAR_ssh_key_name:      ${{ secrets.SSH_KEY_NAME }}
+  TF_VAR_my_ip:             "0.0.0.0/0"
+  TF_VAR_openai_api_key:    ${{ secrets.OPENAI_API_KEY }}
   TF_VAR_anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-  TF_VAR_pinecone_api_key: ${{ secrets.PINECONE_API_KEY }}
-  TF_VAR_secret_key:       ${{ secrets.SECRET_KEY }}
-  TF_VAR_auth0_domain:     ${{ secrets.AUTH0_DOMAIN }}
-  TF_VAR_auth0_audience:   ${{ secrets.AUTH0_AUDIENCE }}
-  AWS_ACCESS_KEY_ID:        ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY:    ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_DEFAULT_REGION:       us-east-1
+  TF_VAR_pinecone_api_key:  ${{ secrets.PINECONE_API_KEY }}
+  TF_VAR_secret_key:        ${{ secrets.SECRET_KEY }}
+  TF_VAR_auth0_domain:      ${{ secrets.AUTH0_DOMAIN }}
+  TF_VAR_auth0_audience:    ${{ secrets.AUTH0_AUDIENCE }}
+  TF_VAR_domain_name:       "agencylensai.com"
+  AWS_ACCESS_KEY_ID:         ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY:     ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_DEFAULT_REGION:        us-east-1
 
 jobs:
   terraform:
