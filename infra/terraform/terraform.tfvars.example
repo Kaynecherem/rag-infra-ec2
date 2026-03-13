@@ -1,0 +1,14 @@
+# Copy this to terraform.tfvars and fill in your values
+# DO NOT commit terraform.tfvars to git
+
+aws_profile       = "insurance-rag"
+ssh_key_name      = "insurance-rag2"
+my_ip             = "YOUR.IP.HERE/32"    # https://whatismyip.com → add /32
+
+openai_api_key    = "sk-proj-..."
+anthropic_api_key = "sk-ant-..."
+pinecone_api_key  = "pcsk_..."
+secret_key        = "GENERATE_WITH: python -c \"import secrets; print(secrets.token_urlsafe(32))\""
+
+auth0_domain      = "insurance-rag.us.auth0.com"
+auth0_audience    = "https://api.insurance-rag.com"
