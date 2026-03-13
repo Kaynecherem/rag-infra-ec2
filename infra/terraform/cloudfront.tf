@@ -17,10 +17,33 @@ resource "aws_cloudfront_distribution" "api" {
     }
   }
 
+  origin {
+    domain_name = aws_eip.api.public_dns
+    origin_id   = "ec2-superadmin-api"
+
+    custom_origin_config {
+      http_port              = 8001
+      https_port             = 443
+      origin_protocol_policy = "http-only"
+      origin_ssl_protocols   = ["TLSv1.2"]
+    }
+  }
+
   default_cache_behavior {
     allowed_methods        = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods         = ["GET", "HEAD"]
     target_origin_id       = "ec2-api"
+    viewer_protocol_policy = "redirect-to-https"
+
+    cache_policy_id          = data.aws_cloudfront_cache_policy.no_cache.id
+    origin_request_policy_id = aws_cloudfront_origin_request_policy.forward_all.id
+  }
+
+  ordered_cache_behavior {
+    path_pattern           = "/api/v1/superadmin/*"
+    allowed_methods        = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods         = ["GET", "HEAD"]
+    target_origin_id       = "ec2-superadmin-api"
     viewer_protocol_policy = "redirect-to-https"
 
     cache_policy_id          = data.aws_cloudfront_cache_policy.no_cache.id
